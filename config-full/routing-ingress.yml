@@ -13,22 +13,22 @@ spec:
         - "*"
 
 ---
-#apiVersion: projectcontour.io/v1
-#kind: HTTPProxy
-#metadata:
-#  name: tap-gui
-#  namespace: tap-gui
-#spec:
-#  virtualhost:
-#    fqdn: #@ "tap-gui.{}".format(data.values.domain)
-#    tls:
-#      secretName: #@ "{}/{}".format(data.values.tls.namespace,data.values.tls.secretName)
-#  routes:
-#    - services:
-#        - name: server
-#          port: 7000
-#
-#---
+#!apiVersion: projectcontour.io/v1
+#!kind: HTTPProxy
+#!  metadata:
+#!    name: tap-gui
+#!    namespace: tap-gui
+#!spec:
+#!  virtualhost:
+#!    fqdn: #@ "tap-gui.{}".format(data.values.domain)
+#!    tls:
+#!      secretName: #@ "{}/{}".format(data.values.tls.namespace,data.values.tls.secretName)
+#!  routes:
+#!    - services:
+#!       - name: server
+#!          port: 7000
+#!
+#!---
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
