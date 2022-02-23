@@ -18,7 +18,6 @@ spec:
   - ytt:
       paths:
       - config
-      - config-dev
       - config-full
       valuesFrom:
       - configMapRef:
