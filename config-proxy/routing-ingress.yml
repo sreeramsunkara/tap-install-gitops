@@ -7,7 +7,7 @@ metadata:
   name: contour-delegation
   namespace: #@ data.values.tls.namespace
   annotations:
-    kapp.k14s.io/exists: ""
+    kapp.k14s.io/change-rule: "upsert after upserting tap-install/tap"
 spec:
   delegations:
     - secretName: #@ data.values.tls.secretName
@@ -36,7 +36,7 @@ metadata:
   name: app-live-view
   namespace: app-live-view
   annotations:
-    kapp.k14s.io/exists: ""
+    kapp.k14s.io/change-rule: "upsert after upserting tap-install/tap"
 spec:
   virtualhost:
     fqdn: #@ "app-live-view.{}".format(data.values.domain)
@@ -54,7 +54,7 @@ metadata:
   name: accelerator
   namespace: accelerator-system
   annotations:
-    kapp.k14s.io/exists: ""
+    kapp.k14s.io/change-rule: "upsert after upserting tap-install/tap"
 spec:
   virtualhost:
     fqdn: #@ "accelerator.{}".format(data.values.domain)
@@ -71,7 +71,7 @@ kind: HTTPProxy
 metadata:
   annotations:
     projectcontour.io/ingress.class: contour-external
-    kapp.k14s.io/exists: ""
+    kapp.k14s.io/change-rule: "upsert after upserting tap-install/tap"
   labels:
     projectcontour.io/ingress.class: contour-external
   name: api-portal-external
@@ -96,7 +96,7 @@ metadata:
   name: learningcenter
   namespace: learning-center-guided-ui
   annotations:
-    kapp.k14s.io/exists: ""
+    kapp.k14s.io/change-rule: "upsert after upserting tap-install/tap"
 spec:
   virtualhost:
     fqdn: #@ "learningcenter.{}".format(data.values.domain)
