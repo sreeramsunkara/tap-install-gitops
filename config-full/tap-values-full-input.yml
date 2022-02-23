@@ -8,3 +8,8 @@ tap:
   domains:
     learningCenter: learningcenter.tap.tanzu4u.net
     knative: apps.tap.tanzu4u.net
+
+domain: tap.tanzu4u.net
+tls:
+  secretName: tls
+  namespace: tanzu-system-ingress

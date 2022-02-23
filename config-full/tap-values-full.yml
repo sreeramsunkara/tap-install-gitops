@@ -26,11 +26,16 @@ learningcenter:
   ingressDomain: #@ data.values.tap.domains.learningCenter
   ingressSecret:
     secretName: tls
+    server:
+      service_type: ClusterIP
 
 tap_gui:
   service_type: ClusterIP
   ingressEnabled: "true"
   ingressDomain: #@ data.values.tap.domains.main
+  tls:
+    namespace: tanzu-system-ingress
+    secretName: tls
   app_config:
     app:
       baseUrl: #@ "https://{}".format(data.values.tap.domains.tapGui)
