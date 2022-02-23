@@ -1,17 +1,18 @@
 #@ load("@ytt:data", "data")
 
-#!---
-#!apiVersion: projectcontour.io/v1
-#!kind: TLSCertificateDelegation
-#!metadata:
-#!  name: contour-delegation
-#!  namespace: #@ data.values.tls.namespace
-#!spec:
-#!  delegations:
-#!    - secretName: #@ data.values.tls.secretName
-#!      targetNamespaces:
-#!        - "*"
-
+---
+apiVersion: projectcontour.io/v1
+kind: TLSCertificateDelegation
+metadata:
+  name: contour-delegation
+  namespace: #@ data.values.tls.namespace
+  annotations:
+    kapp.k14s.io/exists: ""
+spec:
+  delegations:
+    - secretName: #@ data.values.tls.secretName
+      targetNamespaces:
+        - "*"
 ---
 #!apiVersion: projectcontour.io/v1
 #!kind: HTTPProxy
@@ -34,6 +35,8 @@ kind: HTTPProxy
 metadata:
   name: app-live-view
   namespace: app-live-view
+  annotations:
+    kapp.k14s.io/exists: ""
 spec:
   virtualhost:
     fqdn: #@ "app-live-view.{}".format(data.values.domain)
@@ -50,6 +53,8 @@ kind: HTTPProxy
 metadata:
   name: accelerator
   namespace: accelerator-system
+  annotations:
+    kapp.k14s.io/exists: ""
 spec:
   virtualhost:
     fqdn: #@ "accelerator.{}".format(data.values.domain)
@@ -66,6 +71,7 @@ kind: HTTPProxy
 metadata:
   annotations:
     projectcontour.io/ingress.class: contour-external
+    kapp.k14s.io/exists: ""
   labels:
     projectcontour.io/ingress.class: contour-external
   name: api-portal-external
@@ -89,6 +95,8 @@ kind: HTTPProxy
 metadata:
   name: learningcenter
   namespace: learning-center-guided-ui
+  annotations:
+    kapp.k14s.io/exists: ""
 spec:
   virtualhost:
     fqdn: #@ "learningcenter.{}".format(data.values.domain)
