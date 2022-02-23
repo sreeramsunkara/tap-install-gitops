@@ -9,7 +9,7 @@ kind: Namespace
 metadata:
   name: #@ data.values.tap.devNamespace
 ---
-#@ def registry():
+#@ def config():
 #@  return {
 #@    "auths": {
 #@      data.values.tap.registry.host: {
@@ -27,7 +27,7 @@ metadata:
   namespace: #@ data.values.tap.devNamespace
 type: kubernetes.io/dockerconfigjson
 stringData:
-  .dockerconfigjson: #@ json.encode(registry())
+  .dockerconfigjson: #@ json.encode(config())
 ---
 apiVersion: v1
 kind: Secret
