@@ -118,6 +118,7 @@ spec:
     refName: tap.tanzu.vmware.com
     versionSelection:
       constraints: #@ str(data.values.tap.version)
+      prereleases: {}
   serviceAccountName: tap-default-sa
   values:
   - secretRef:
