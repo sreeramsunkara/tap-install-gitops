@@ -113,6 +113,7 @@ metadata:
     kapp.k14s.io/change-group: tap
     kapp.k14s.io/change-rule: "upsert after upserting tap-install/rbac"
     kapp.k14s.io/change-rule.repo: "upsert after upserting tap-install/tap-repo"
+    ext.packaging.carvel.dev/ytt-paths-from-secret-name.0: "custom-labels"
 spec:
   packageRef:
     refName: tap.tanzu.vmware.com
@@ -123,3 +124,19 @@ spec:
   values:
   - secretRef:
       name: tap-values
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: custom-labels
+  namespace: #@ data.values.tap.namespace
+stringData:
+  add-ns-label.yml: |
+    #@ load("@ytt:overlay", "overlay")
+    #@overlay/match by=overlay.subset({"kind":"Namespace"}),expects="1+"
+    ---
+    metadata:
+      #@overlay/match missing_ok=True
+      labels:
+        #@overlay/match missing_ok=True
+        istio-injection: false
