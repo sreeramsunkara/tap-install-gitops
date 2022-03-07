@@ -129,14 +129,31 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: custom-labels
-  namespace: #@ data.values.tap.namespace
 stringData:
-  add-ns-label.yml: |
+  add-custom-labels.yml: |
     #@ load("@ytt:overlay", "overlay")
-    #@overlay/match by=overlay.subset({"kind":"Namespace"}),expects="1+"
+    
+    #@overlay/match by=overlay.subset({"kind":"PackageInstall"})
     ---
     metadata:
       #@overlay/match missing_ok=True
-      labels:
+      annotations:
         #@overlay/match missing_ok=True
-        istio-injection: false
+        ext.packaging.carvel.dev/ytt-paths-from-secret-name.0: my-custom-labels
+    
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: my-custom-labels
+    stringData:
+      add-my-custom-labels.yml: |
+        #@ load("@ytt:overlay", "overlay")
+    
+        #@overlay/match by=overlay.subset({"kind": "Namespace"})
+        ---
+        metadata:
+          #@overlay/match missing_ok=True
+          annotations:
+            #@overlay/match missing_ok=True
+            istio-injection: false
