@@ -134,7 +134,7 @@ stringData:
   add-custom-labels.yml: |
     #@ load("@ytt:overlay", "overlay")
     
-    #@overlay/match by=overlay.subset({"kind":"PackageInstall"})
+    #@overlay/match by=overlay.subset({"kind":"PackageInstall"}),expects="1+"
     ---
     metadata:
       #@overlay/match missing_ok=True
