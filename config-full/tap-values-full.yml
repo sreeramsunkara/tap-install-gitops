@@ -129,6 +129,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: custom-labels
+  namespace: #@ data.values.tap.namespace
 stringData:
   add-custom-labels.yml: |
     #@ load("@ytt:overlay", "overlay")
