@@ -155,6 +155,6 @@ stringData:
         ---
         metadata:
           #@overlay/match missing_ok=True
-          annotations:
+          labels:
             #@overlay/match missing_ok=True
             istio-injection: false
