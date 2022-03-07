@@ -151,7 +151,7 @@ stringData:
       add-my-custom-labels.yml: |
         #@ load("@ytt:overlay", "overlay")
     
-        #@overlay/match by=overlay.subset({"kind": "Namespace"})
+        #@overlay/match by=overlay.subset({"kind": "Namespace"}),expects="1+"
         ---
         metadata:
           #@overlay/match missing_ok=True
