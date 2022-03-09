@@ -158,3 +158,5 @@ stringData:
           labels:
             #@overlay/match missing_ok=True
             istio-injection: "false"
+            #@overlay/match missing_ok=True
+            tmc-policy: "false"
