@@ -10,6 +10,18 @@ tap:
     knative: apps.tap.tanzu4u.net
     appliveview:
       host: appliveview.tap.tanzu4u.net
+  supplychain:
+    gitops:
+      repo:
+        prefix: ssh://git@github.com/sreeramsunkara/
+        branch: main
+        commit:
+          message: supply-chain-commit
+      user:
+        name: sreeramsunkara
+        email: sunkarasr@vmware.com
+      secret: git-ssh
+
 domain: tap.tanzu4u.net
 tls:
   secretName: tls
