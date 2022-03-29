@@ -45,6 +45,8 @@ kind: Secret
 metadata:
   name: git-ssh
   namespace: #@ data.values.tap.devNamespace
+  annotations:
+    tekton.dev/git-0: github.com
 type: kubernetes.io/ssh-auth
 data:
   identity: #@ data.values.tap.credentials.gitops.identity
@@ -60,6 +62,7 @@ metadata:
   namespace: #@ data.values.tap.devNamespace
 secrets:
   - name: registry-credentials
+  - name: git-ssh
 imagePullSecrets:
   - name: registry-credentials
   - name: tap-registry
