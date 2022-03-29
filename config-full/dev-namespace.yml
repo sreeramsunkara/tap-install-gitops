@@ -47,7 +47,7 @@ metadata:
   name: git-ssh
 data:
   identity: #@ data.values.tap.credentials.gitops.identity
-  identity.pub: #@ data.values.tap.credentials.gitops.identity.pub
+  identity.pub: #@ data.values.tap.credentials.gitops.identity_pub
   known_hosts: #@ data.values.tap.credentials.gitops.known_hosts
 ---
 
