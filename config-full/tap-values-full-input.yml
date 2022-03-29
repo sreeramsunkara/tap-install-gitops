@@ -13,7 +13,7 @@ tap:
   supplychain:
     gitops:
       repo:
-        prefix: ssh://git@github.com/sreeramsunkara/
+        prefix: ssh://git@github.com:sreeramsunkara/
         branch: main
         commit:
           message: supply-chain-commit

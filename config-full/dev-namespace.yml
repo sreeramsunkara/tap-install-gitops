@@ -40,15 +40,17 @@ type: kubernetes.io/dockerconfigjson
 data:
   .dockerconfigjson: e30K
 ---
-#! secret for supply chain gitops
 apiVersion: v1
 kind: Secret
 metadata:
   name: git-ssh
+  namespace: #@ data.values.tap.devNamespace
+type: kubernetes.io/ssh-auth
 data:
   identity: #@ data.values.tap.credentials.gitops.identity
   identity.pub: #@ data.values.tap.credentials.gitops.identity_pub
   known_hosts: #@ data.values.tap.credentials.gitops.known_hosts
+  ssh-privatekey: #@ data.values.tap.credentials.gitops.identity
 ---
 
 apiVersion: v1
