@@ -4,7 +4,7 @@
 ---
 #@ def config():
 profile: full
-excluded_packages:
+#!excluded_packages:
 #!  - snyk.scanning.apps.tanzu.vmware.com
 #!  - fluxcd.source.controller.tanzu.vmware.com
 ceip_policy_disclosed: true
