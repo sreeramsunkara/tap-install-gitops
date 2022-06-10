@@ -88,12 +88,13 @@ tap_gui:
 
 metadata_store:
   app_service_type: LoadBalancer
+  ns_for_export_app_cert: #@ data.values.tap.devNamespace
  
 grype:
   namespace: #@ data.values.tap.devNamespace
   targetImagePullSecret: "tap-registry"
 
-synk:
+synk-scanner:
   namespace: #@ data.values.tap.devNamespace
   targetImagePullSecret: "tap-registry"
   tokenSecret:
