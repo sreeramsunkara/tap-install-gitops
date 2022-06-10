@@ -93,6 +93,17 @@ grype:
   namespace: #@ data.values.tap.devNamespace
   targetImagePullSecret: "tap-registry"
 
+synk:
+  namespace: #@ data.values.tap.devNamespace
+  targetImagePullSecret: "tap-registry"
+  tokenSecret:
+    name: snyk-api-token
+  metadataStore:
+    caSecret:
+      importFromNamespace: "" #! since both snyk and grype both enable store, one must leave importFromNamespace blank
+    authSecret:
+      importFromNamespace: "" #! since both snyk and grype both enable store, one must leave importFromNamespace blank
+
 contour:
   envoy:
     service:
