@@ -95,6 +95,15 @@ grype:
   namespace: #@ data.values.tap.devNamespace
   targetImagePullSecret: "tap-registry"
 
+scanning:
+  metadataStore:
+    url: ""
+    caSecret:
+      name: store-ca-cert
+      importFromNamespace: metadata-store
+    authSecret:
+      name: store-auth-token
+      importFromNamespace: metadata-store
 #!synk-scanner:
 #!  namespace: #@ data.values.tap.devNamespace
 #!  targetImagePullSecret: "tap-registry"
