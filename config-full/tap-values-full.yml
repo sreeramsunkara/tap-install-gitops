@@ -4,7 +4,8 @@
 ---
 #@ def config():
 profile: full
-#!excluded_packages:
+excluded_packages:
+  - snyk.scanning.apps.tanzu.vmware.com
 #!  - fluxcd.source.controller.tanzu.vmware.com
 ceip_policy_disclosed: true
 buildservice:
@@ -94,16 +95,16 @@ grype:
   namespace: #@ data.values.tap.devNamespace
   targetImagePullSecret: "tap-registry"
 
-synk-scanner:
-  namespace: #@ data.values.tap.devNamespace
-  targetImagePullSecret: "tap-registry"
-  tokenSecret:
-    name: snyk-api-token
-  metadataStore:
-    caSecret:
-      importFromNamespace: "" #! since both snyk and grype both enable store, one must leave importFromNamespace blank
-    authSecret:
-      importFromNamespace: "" #! since both snyk and grype both enable store, one must leave importFromNamespace blank
+#!synk-scanner:
+#!  namespace: #@ data.values.tap.devNamespace
+#!  targetImagePullSecret: "tap-registry"
+#!  tokenSecret:
+#!    name: snyk-api-token
+#!  metadataStore:
+#!    caSecret:
+#!      importFromNamespace: "" #! since both snyk and grype both enable store, one must leave importFromNamespace blank
+#!    authSecret:
+#!      importFromNamespace: "" #! since both snyk and grype both enable store, one must leave importFromNamespace blank
 
 contour:
   envoy:
