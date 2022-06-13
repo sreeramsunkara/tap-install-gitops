@@ -134,7 +134,7 @@ appliveview:
 
 appliveview_connector:
   backend:
-    host: #@ data.values.tap.domains.appliveview.host
+    #!host: #@ data.values.tap.domains.appliveview.host
     #!    port: #@ data.values.tap.domains.appliveview.port
     sslDisabled: "true"
 #@ end
