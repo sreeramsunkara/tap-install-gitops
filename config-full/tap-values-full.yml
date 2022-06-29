@@ -104,10 +104,7 @@ scanning:
     authSecret:
       name: store-auth-token
       importFromNamespace: metadata-store
-      
-snyk:
-  tokenSecret:
-    name: snyk-api-token
+
 #!snyk-scanner:
 #!  namespace: #@ data.values.tap.devNamespace
 #!  targetImagePullSecret: "tap-registry"
