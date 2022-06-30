@@ -110,7 +110,7 @@ metadata_store:
  
 grype:
   namespace: #@ data.values.tap.devNamespace
-  targetImagePullSecret: "tap-registry"
+  targetImagePullSecret: "registry-credentials"
 
 scanning:
   metadataStore:
