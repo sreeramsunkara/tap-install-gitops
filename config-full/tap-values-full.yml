@@ -17,19 +17,36 @@ buildservice:
   descriptor_name: "full"
   enable_automatic_dependency_updates: true
 
-supply_chain: basic
-ootb_supply_chain_basic:
+#!supply_chain: basic
+supply_chain: testing_scanning
+
+#!ootb_supply_chain_basic:
+#!  registry:
+#!    server: #@ data.values.tap.registry.host
+#!    repository: #@ data.values.tap.registry.repositories.ootbSupplyChain
+#! gitops:
+#!    repository_prefix: #@ data.values.tap.supplychain.gitops.repo.prefix
+#!    branch: #@ data.values.tap.supplychain.gitops.repo.branch
+#!    user_name: #@ data.values.tap.supplychain.gitops.user.name
+#!    user_email: #@ data.values.tap.supplychain.gitops.user.email
+#!    commit_message: #@ data.values.tap.supplychain.gitops.repo.commit.message
+#!    ssh_secret: #@ data.values.tap.supplychain.gitops.secret
+
+ootb_supply_chain_testing_scanning:
   registry:
     server: #@ data.values.tap.registry.host
     repository: #@ data.values.tap.registry.repositories.ootbSupplyChain
   gitops:
-#!    ssh_secret: ""
     repository_prefix: #@ data.values.tap.supplychain.gitops.repo.prefix
     branch: #@ data.values.tap.supplychain.gitops.repo.branch
     user_name: #@ data.values.tap.supplychain.gitops.user.name
     user_email: #@ data.values.tap.supplychain.gitops.user.email
     commit_message: #@ data.values.tap.supplychain.gitops.repo.commit.message
     ssh_secret: #@ data.values.tap.supplychain.gitops.secret
+  scanning:
+    image:
+      template: snyk-private-image-scan-template
+      policy: scan-policy
 
 learningcenter:
   ingressDomain: #@ data.values.tap.domains.learningCenter
