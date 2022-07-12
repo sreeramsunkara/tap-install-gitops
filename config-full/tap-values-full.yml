@@ -108,7 +108,7 @@ metadata_store:
   app_service_type: ClusterIP
   ns_for_export_app_cert: #@ data.values.tap.devNamespace
   ingress_enabled: "true"
-  ingressDomain: #@ data.values.tap.domains.main
+  ingress_domain: #@ data.values.tap.domains.main
   tls:
     namespace: tanzu-system-ingress
     secretName: tls
